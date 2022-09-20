@@ -1,11 +1,13 @@
 import { useState } from "react";
 
 
-function AddNote({handleAddNote}) {
+function AddNote({handleAddNote, handleEditNote, editMode, setEditMode, text, id}) {
 
-  const [noteText, setNoteText] = useState("");
+  const [noteText, setNoteText] = useState(text);
 
   const characterLimit = 200;
+
+  const color = editMode === false ? "#67d7cc" : "rgb(233, 233, 233)";
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -16,20 +18,30 @@ function AddNote({handleAddNote}) {
 
   const handleSaveClick = () => {
     if (noteText.trim().length > 0) {
-      handleAddNote(noteText);
-      setNoteText("");
+      if(editMode){
+        handleEditNote(id, noteText);
+        setEditMode(false);
+      } else {
+        handleAddNote(noteText);
+        setNoteText("");
+      }
+    } else {
+      alert("Error: please type something");
     }
   };
 
   return (
-    <div className="note new">
+    <div className="note new" style={{backgroundColor: color}}>
       <textarea
         rows="8"
         cols="10"
-        placeholder="Type to add a note..."
         onChange={handleChange}
         value={noteText}
-      ></textarea>
+        placeholder="Write something here..."
+        autoFocus
+        onFocus={e => e.currentTarget.select()}
+        style={{backgroundColor: color}}
+      >{noteText}</textarea>
       <div className="note-footer">
         <small>{characterLimit - noteText.length} remaining</small>
         <button className="save" onClick={handleSaveClick}>Save</button>
@@ -37,4 +49,10 @@ function AddNote({handleAddNote}) {
     </div>
   )
 }
+
+AddNote.defaultProps = {
+  editMode: false,
+  text: "",
+}
+
 export default AddNote;

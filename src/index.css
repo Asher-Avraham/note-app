@@ -40,13 +40,13 @@ code {
 }
 
 .note.new {
-  background-color: #67d7cc;
+  /* background-color: #67d7cc; */
 }
 
 textarea {
   border: none;
   resize: none;
-  background-color: #67d7cc;
+  /* background-color: #67d7cc; */
 }
 
 textarea:focus {

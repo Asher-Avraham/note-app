@@ -60,7 +60,6 @@ function App() {
     };
     const newNotes = notes.map((notes) =>
       notes.id === id ? updatedNote : notes);
-
     setNotes(newNotes);
   }
 
