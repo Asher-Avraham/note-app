@@ -25,7 +25,7 @@ function App() {
   const [searchText, setSearchText] = useState("");
   const [darkMode, setDarkMode] = useState(false);
 
-
+  // Use local storage
   useEffect(() => {
     const savedNotes = JSON.parse(
       localStorage.getItem("react-notes-app-data")
@@ -46,10 +46,10 @@ function App() {
       id: nanoid(),
       text: text,
       date: date.toLocaleDateString()
-    }
+    };
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
-  }
+  };
 
   const editNote = (id, text) => {
     const date = new Date();
@@ -61,20 +61,23 @@ function App() {
     const newNotes = notes.map((notes) =>
       notes.id === id ? updatedNote : notes);
     setNotes(newNotes);
-  }
+  };
 
   const deleteNote = (id) => {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
-  }
+  };
 
   return (
     <div className={`${darkMode && "dark-mode"}`}>
       <div className="container">
         <Header
           darkMode={darkMode}
-          handleToggleDarkMode={setDarkMode} />
-        <Search handleSearchNote={setSearchText} />
+          handleToggleDarkMode={setDarkMode}
+        />
+        <Search
+          handleSearchNote={setSearchText}
+        />
         <NotesList
           notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))}
           handleAddNote={addNote}
@@ -84,6 +87,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

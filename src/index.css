@@ -1,3 +1,13 @@
+:root {
+  --primary: #FFB3B3;
+  --secondary: #FFDBA4;
+  --thirdly: #FFE9AE;
+  --fourthly: #C1EFFF;
+
+  --dark: #131a26;
+  --light: #eee;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,11 +15,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Background SVG texture */
+  background-color: #edfaff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23c1efff' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: var(--dark);
+}
+
+.dark-mode h1 {
+  color: var(--light);
+}
+
+
+/* next */
+.container {
+  max-width: 960px;
+  margin: auto;
+  padding: 15px;
+  min-height: 100vh;
 }
 
 .header{
@@ -18,55 +52,36 @@ code {
   justify-content: space-between;
 }
 
-.dark-mode {
-  background-color: black;
+/* Search Bar */
+.search {
+  display: flex;
+  align-items: center;
+  background-color: var(--thirdly);
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 1.5em;
 }
 
-.dark-mode h1 {
-  color: white;
+.search input {
+  border: none;
+  background-color: var(--thirdly);
+  width: 100%;
 }
 
-.container {
-  max-width: 960px;
-  margin: auto;
-  padding: 15px;
-  min-height: 100vh;
+.search input:focus {
+  outline: None;
 }
 
+
+/* Notes */
 .notes-list {
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-.note.new {
-  /* background-color: #67d7cc; */
-}
-
-textarea {
-  border: none;
-  resize: none;
-  /* background-color: #67d7cc; */
-}
-
-textarea:focus {
-  outline: none;
-}
-
-.save {
-  background-color: #e1e1e1;
-  border: none;
-  border-radius: 15px;
-  padding: 5px 10px;
-}
-
-.save:hover {
-  opacity: 80%;
-  cursor: pointer;
-}
-
 .note {
-  background-color: #fef68a;
+  background-color: var(--primary);
   border-radius: 10px;
   padding: 1rem;
   min-height: 170px;
@@ -76,6 +91,7 @@ textarea:focus {
   white-space: pre-wrap;
 }
 
+/* Note Footer */
 .note-footer {
   display: flex;
   align-items: center;
@@ -92,22 +108,29 @@ textarea:focus {
   opacity: 60%;
 }
 
-.search {
-  display: flex;
-  align-items: center;
-  background-color: rgb(233, 233, 233);
-  border-radius: 10px;
-  padding: 5px;
-  margin-bottom: 1.5em;
+/* New Note */
+.note.new {
+  background-color: var(--secondary);
 }
 
-.search input {
+textarea {
   border: none;
-  background-color: rgb(233, 233, 233);
-  width: 100%;
+  resize: none;
 }
 
-.search input:focus {
-  outline: None;
+textarea:focus {
+  outline: none;
 }
 
+/* Button - being used for "save" and to toggle "light and dark mode" */
+.btn {
+  background-color: var(--fourthly);
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
+.btn:hover {
+  opacity: 80%;
+  cursor: pointer;
+}

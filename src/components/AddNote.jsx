@@ -1,13 +1,11 @@
 import { useState } from "react";
 
-
 function AddNote({handleAddNote, handleEditNote, editMode, setEditMode, text, id}) {
 
   const [noteText, setNoteText] = useState(text);
 
+  const color = editMode === false ? "#FFDBA4" : "#FFE9AE";
   const characterLimit = 200;
-
-  const color = editMode === false ? "#67d7cc" : "rgb(233, 233, 233)";
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -41,10 +39,12 @@ function AddNote({handleAddNote, handleEditNote, editMode, setEditMode, text, id
         autoFocus
         onFocus={e => e.currentTarget.select()}
         style={{backgroundColor: color}}
-      >{noteText}</textarea>
+      >
+        {noteText}
+      </textarea>
       <div className="note-footer">
         <small>{characterLimit - noteText.length} remaining</small>
-        <button className="save" onClick={handleSaveClick}>Save</button>
+        <button className="btn" onClick={handleSaveClick}>Save</button>
       </div>
     </div>
   )
@@ -53,6 +53,6 @@ function AddNote({handleAddNote, handleEditNote, editMode, setEditMode, text, id
 AddNote.defaultProps = {
   editMode: false,
   text: "",
-}
+};
 
 export default AddNote;
