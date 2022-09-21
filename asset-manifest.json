@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/asher-avraham.github.io/note-app/static/css/main.f7e5ae56.css",
+    "main.js": "/asher-avraham.github.io/note-app/static/js/main.212b918c.js",
+    "index.html": "/asher-avraham.github.io/note-app/index.html",
+    "main.f7e5ae56.css.map": "/asher-avraham.github.io/note-app/static/css/main.f7e5ae56.css.map",
+    "main.212b918c.js.map": "/asher-avraham.github.io/note-app/static/js/main.212b918c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f7e5ae56.css",
+    "static/js/main.212b918c.js"
+  ]
+}
